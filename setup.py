@@ -21,9 +21,7 @@ ext_modules = [
 ]
 
 install_requires=[
-    'stanford-stk @ git+https://github.com/stanford-futuredata/stk.git@main',
-    'grouped_gemm @ git+https://github.com/tgale96/grouped_gemm@main',
-    'mosaicml-turbo==0.0.4',
+    'stanford-stk @ git+https://github.com/OlivierDehaene/stk.git@42a116ce47daed46f1f11ae60073aa2d69e22d77',
 ]
 
 extra_deps = {}

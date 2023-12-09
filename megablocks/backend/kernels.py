@@ -99,7 +99,7 @@ def _padded_copy(
         offsets += BLOCK_X
 
 
-def padded_gather(x, indices, bin_ids, weights, bins, padded_bins, top_k):
+def padded_gather(x, indices, bin_ids, weights, bins, padded_bins, top_k, output_rows = None):
     # Validate the input shapes.
     assert_is_matrix(x)
     assert_is_vector(indices)
@@ -115,7 +115,7 @@ def padded_gather(x, indices, bin_ids, weights, bins, padded_bins, top_k):
 
     # NOTE: Because of the padding, the output size is dynamic.
     # We load the final padded bin bound to get the output rows.
-    output_rows = padded_bins[-1].cpu().item()
+    output_rows = padded_bins[-1].cpu().item() if output_rows is None else output_rows
     out = torch.zeros(
         (output_rows, x.shape[1]),
         dtype=x.dtype,

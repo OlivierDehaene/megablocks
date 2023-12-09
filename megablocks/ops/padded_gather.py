@@ -8,11 +8,11 @@ class PaddedGatherOp(torch.autograd.Function):
 
     @staticmethod
     @custom_fwd
-    def forward(ctx, x, indices, bin_ids, bins, padded_bins, top_k):
+    def forward(ctx, x, indices, bin_ids, bins, padded_bins, top_k, output_rows=None):
         ctx.save_for_backward(indices, bin_ids, bins, padded_bins)
         ctx.top_k = top_k
         return kernels.padded_gather(
-            x, indices, bin_ids, None, bins, padded_bins, top_k)
+            x, indices, bin_ids, None, bins, padded_bins, top_k, output_rows)
 
     @staticmethod
     @custom_bwd

@@ -11,7 +11,8 @@ ext_modules = [
             "nvcc": [
                 "--ptxas-options=-v",
                 "--optimize=2",
-                "--generate-code=arch=compute_80,code=sm_80"
+                "--generate-code=arch=compute_80,code=sm_80",
+                "--generate-code=arch=compute_90,code=sm_90"
             ]
         })
 ]

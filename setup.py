@@ -1,10 +1,6 @@
 from setuptools import setup, find_packages
-import torch
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
-
-_dc = torch.cuda.get_device_capability()
-_dc = f"{_dc[0]}{_dc[1]}"
 ext_modules = [
     CUDAExtension(
         "megablocks_ops",
@@ -15,7 +11,7 @@ ext_modules = [
             "nvcc": [
                 "--ptxas-options=-v",
                 "--optimize=2",
-                f"--generate-code=arch=compute_{_dc},code=sm_{_dc}"
+                "--generate-code=arch=compute_80,code=sm_80"
             ]
         })
 ]
